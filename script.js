@@ -16,10 +16,12 @@ document.querySelector("#your-number-button").addEventListener('click', () => {
     userNumberElement.value = '';
 })
 
+const userNumberElementTemplate = document.querySelector('template');
+
 function addAttemptElement(value) {
-    const attempt = document.createElement('span');
+    const elementClone = userNumberElementTemplate.content.cloneNode(true)   
+    const attempt =  elementClone.querySelector('span');
     attempt.innerText = value > magicNumber ? `Less than ${value}` : `Bigger than ${value}`;
-    attempt.classList.add("attempt");
     userNumberElements.appendChild(attempt);
 }
 
