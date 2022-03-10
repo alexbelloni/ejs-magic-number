@@ -1,0 +1,32 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#user-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#user-input>* {
+    margin-bottom: 10px;
+}
+
+#attempts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.attempt {
+    font-size: 2rem;
+}
+
+#magic-number {
+    font-size: 5rem;
+}
