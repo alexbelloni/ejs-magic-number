@@ -10,20 +10,14 @@ document.querySelector("#your-number-button").addEventListener('click', () => {
         addAttemptElement(userAttempt);
     } else {
         document.querySelector('#magic-number').innerText = magicNumber;
-        userNumberElement.disabled= true;
+        userNumberElement.disabled = true;
     }
 
     userNumberElement.value = '';
 })
 
-const userNumberElementTemplate = document.querySelector('template');
-
 function addAttemptElement(value) {
-    const elementClone = userNumberElementTemplate.content.cloneNode(true)   
-    const attempt =  elementClone.querySelector('span');
-    attempt.innerText = value > magicNumber ? `Less than ${value}` : `Bigger than ${value}`;
-    userNumberElements.appendChild(attempt);
+    const userNumberElementTemplate = document.querySelector('#ejs-template').innerHTML;
+    const attempt = ejs.compile(userNumberElementTemplate)({ magicNumber, value });
+    userNumberElements.innerHTML += attempt;
 }
-
-
-
