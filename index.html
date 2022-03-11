@@ -17,18 +17,11 @@
             <button id="your-number-button">Enter</button>
         </section>
 
-        <section id="attempts">
-        </section>
+        <section id="attempts"></section>
 
         <span id="magic-number"></span>
     </main>
 
-    <script src="ejs.min.js"></script>
-    <script id="ejs-template" type="text/template">
-        <span class="attempt">
-            <%=value > magicNumber ? `Less than ${value}` : `Bigger than ${value}`%>
-        </span>
-    </script>
     <script src="script.js"></script>
 </body>
 

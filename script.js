@@ -10,14 +10,18 @@ document.querySelector("#your-number-button").addEventListener('click', () => {
         addAttemptElement(userAttempt);
     } else {
         document.querySelector('#magic-number').innerText = magicNumber;
-        userNumberElement.disabled = true;
+        userNumberElement.disabled= true;
     }
 
     userNumberElement.value = '';
 })
 
 function addAttemptElement(value) {
-    const userNumberElementTemplate = document.querySelector('#ejs-template').innerHTML;
-    const attempt = ejs.compile(userNumberElementTemplate)({ magicNumber, value });
-    userNumberElements.innerHTML += attempt;
+    const attempt = document.createElement('span');
+    attempt.innerText = value > magicNumber ? `Less than ${value}` : `Bigger than ${value}`;
+    attempt.classList.add("attempt");
+    userNumberElements.appendChild(attempt);
 }
+
+
+
