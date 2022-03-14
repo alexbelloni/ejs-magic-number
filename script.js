@@ -16,8 +16,17 @@ document.querySelector("#your-number-button").addEventListener('click', () => {
     userNumberElement.value = '';
 })
 
+let userNumberElementTemplate = '';
+async function getTemplate(url) {
+    if (userNumberElementTemplate) return userNumberElementTemplate
+    let res = await fetch(url);
+    return res.text();
+}
+
 function addAttemptElement(value) {
-    const userNumberElementTemplate = document.querySelector('#ejs-template').innerHTML;
-    const attempt = ejs.compile(userNumberElementTemplate)({ magicNumber, value });
-    userNumberElements.innerHTML += attempt;
+    getTemplate('./ejs-template.html')
+    .then(userNumberElementTemplate=>{
+        const attempt = ejs.compile(userNumberElementTemplate)({ magicNumber, value });
+        userNumberElements.innerHTML += attempt;
+    })
 }
